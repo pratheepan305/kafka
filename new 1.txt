@@ -55,7 +55,7 @@ eg:
                                                              ##open another 'cmd' to get output message as consumer
 .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
 
-it will sshow output as: 
+it will show output as: 
 Test input data
 welcome to kafka
 new data
