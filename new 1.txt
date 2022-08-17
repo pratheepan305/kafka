@@ -1,0 +1,63 @@
+after dowonloading kafka in kafka website
+version 3.13.2.1
+
+##extract it in a folder and move it to "C" disk (rename the name of the folder to "Kafka")
+
+##get into "local disk 'C'/kafka/config" open 'server' using notebook 
+
+##search for 'log' change into into
+
+log.dirs=c:/kafka/kafka-logs
+
+##get into "local disk 'C'/kafka/config" open 'zookeeper' using notebook 
+ 
+##search for 'data' change into into
+
+dataDir=c:/kafka/zookeeper-data
+
+then save both files 
+
+                            ##get into "local disk 'C'/kafka" open cmd inside the kafka folder (by clicking on path bar and typing cmd) to open zookeeper
+
+##type
+.bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+##check whether zookeeper opened at 2181
+
+                                                    ##open another 'cmd' to open 'Apache kafka'
+
+type
+.bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+                          ##open another 'cmd' to open 'kafka-topics'(we use bootstrap as zookeper wont be recognized after the latest version)
+.\bin\windows\kafka-topics.bat  --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 4  --topic NewTopic 
+
+you will get like =Created topic NewTopic.
+
+to know the list of topics under a server type with the server name
+.\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+
+
+                                                                ##open another 'cmd' to enter message from producer
+##to insert messages inside our topics##
+.\bin\windows\kafka-console-producer.bat  --broker-list localhost:9092 --topic test-topic 
+
+then enter the messages needed in the subconsole which will be created after entering this command
+
+eg:
+>Test input data
+>new data
+>welcome to kafka
+>happy learning
+
+                                                             ##open another 'cmd' to get output message as consumer
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+
+it will sshow output as: 
+Test input data
+welcome to kafka
+new data
+happy learning
+
