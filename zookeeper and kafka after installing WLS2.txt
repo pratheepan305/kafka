@@ -1,0 +1,64 @@
+To start zookeeper(only after WLS2 installed and path modified)
+
+##type(change version according to version downloaded)
+
+zookeeper-server-start.sh ~/kafka_2.13-3.2.1/config/zookeeper.properties
+
+##output(similar to this it changes periodically)
+
+[2022-08-18 16:34:59,554] INFO Reading configuration from: /home/pratheepan/kafka_2.13-3.2.1/config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2022-08-18 16:34:59,567] INFO clientPortAddress is 0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2022-08-18 16:34:59,567] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2022-08-18 16:34:59,567] INFO observerMasterPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2022-08-18 16:34:59,568] INFO metricsProvider.className is org.apache.zookeeper.metrics.impl.DefaultMetricsProvider (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2022-08-18 16:34:59,571] INFO autopurge.snapRetainCount set to 3 (org.apache.zookeeper.server.DatadirCleanupManager)
+.
+.
+.
+.
+.
+.
+[2022-08-18 16:34:59,798] INFO Snapshotting: 0x1e to /tmp/zookeeper/version-2/snapshot.1e (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2022-08-18 16:34:59,801] INFO Snapshot taken in 2 ms (org.apache.zookeeper.server.ZooKeeperServer)
+[2022-08-18 16:34:59,815] INFO zookeeper.request_throttler.shutdownTimeout = 10000 (org.apache.zookeeper.server.RequestThrottler)
+[2022-08-18 16:34:59,815] INFO PrepRequestProcessor (sid:0) started, reconfigEnabled=false (org.apache.zookeeper.server.PrepRequestProcessor)
+[2022-08-18 16:34:59,835] INFO Using checkIntervalMs=60000 maxPerMinute=10000 maxNeverUsedIntervalMs=0 (org.apache.zookeeper.server.ContainerManager)
+
+
+
+##now zookeeper is started
+
+## dont change or type and start a new terminal for other uses(like running kafka)
+
+Start a new terminal for kafka
+
+##type(change version according to version downloaded)
+
+ kafka-server-start.sh ~/kafka_2.13-3.2.1/config/server.properties
+ 
+##output(similar to this it changes periodically) 
+ 
+ [2022-08-18 16:39:36,917] INFO Registered kafka:type=kafka.Log4jController MBean (kafka.utils.Log4jControllerRegistration$)
+[2022-08-18 16:39:37,276] INFO Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation (org.apache.zookeeper.common.X509Util)
+[2022-08-18 16:39:37,392] INFO Registered signal handlers for TERM, INT, HUP (org.apache.kafka.common.utils.LoggingSignalHandler)
+.
+.
+.
+.
+.
+.
+[2022-08-18 16:39:39,198] INFO [SocketServer listenerType=ZK_BROKER, nodeId=0] Started socket server acceptors and processors (kafka.network.SocketServer)
+[2022-08-18 16:39:39,206] INFO Kafka version: 3.2.1 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-08-18 16:39:39,207] INFO Kafka commitId: b172a0a94f4ebb9f (org.apache.kafka.common.utils.AppInfoParser)
+[2022-08-18 16:39:39,207] INFO Kafka startTimeMs: 1660820979200 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-08-18 16:39:39,209] INFO [KafkaServer id=0] started (kafka.server.KafkaServer)
+[2022-08-18 16:39:39,270] INFO [BrokerToControllerChannelManager broker=0 name=forwarding]: Recorded new controller, from now on will use broker DESKTOP-K0A284L.localdomain:9092 (id: 0 rack: null) (kafka.server.BrokerToControllerRequestThread)
+[2022-08-18 16:39:39,306] INFO [BrokerToControllerChannelManager broker=0 name=alterPartition]: Recorded new controller, from now on will use broker DESKTOP-K0A284L.localdomain:9092 (id: 0 rack: null) (kafka.server.BrokerToControllerRequestThread)
+
+##now kafka  is started
+
+## dont change or type and start a new terminal for other uses
+
+we need both the terminal of zookeeper and kafka open to operate in kafka
+
+
