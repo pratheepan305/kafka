@@ -1,0 +1,31 @@
+-Now open ubunto Terminal
+-link for instructions
+https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-windows-without-zookeeper-kraft-mode
+
+-start Kafka and Zookeeper in two terminals using the start command
+
+-open a new terminal
+
+-we need to generate a Cluster ID    (i.e random uuid)
+
+-type
+kafka-storage.sh random-uuid
+
+-output will be random
+(eg:jgj-CC28S0egbEYPvhS21Q)
+
+-now we need to format the Kafka storage(copy and paste the random uuid in the command marked as <uuid>
+-type
+
+kafka-storage.sh format -t <uuid> -c ~/kafka_2.13-3.2.1/config/kraft/server.properties
+
+(eg:kafka-storage.sh format -t jgj-CC28S0egbEYPvhS21Q  -c ~/kafka_2.13-3.2.1/config/kraft/server.properties)
+
+-output be like
+Formatting /tmp/kraft-combined-logs
+
+-now we have to start kafka
+-type
+ kafka-server-start.sh ~/kafka_2.13-3.2.1/config/kraft/server.properties
+ 
+ wola now we have kafka running without zookeeper
