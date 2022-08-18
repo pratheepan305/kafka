@@ -1,0 +1,16 @@
+to change zookeeper directory path
+
+##type
+
+ nano kafka_2.13-3.2.1/config/zookeeper.properties
+ 
+##in there search 'dataDir' and change the directory 
+ 
+ 
+ to change kafka server log path
+ 
+ ##type
+ 
+ nano kafka_2.13-3.2.1/config/server.properties
+ 
+##in there search for 'log.dirs' and change the log directory
