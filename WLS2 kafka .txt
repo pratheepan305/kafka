@@ -1,0 +1,121 @@
+windows WSL2:install kafka binaries(windows10 or above)
+
+Windows Issues:
+Kafka is not intended to be run on Windows natively and has several issues that may arise over time.
+
+link to download kafka = https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-windows
+
+step 1:
+
+ -open cmd promt as admin
+ -type 'winver' it shows windows version
+ -build should be higher than 1900
+
+step 2:
+ 
+ -open powershell as admin
+ -type 'wsl --install' to install wsl2
+ -(sometimes ubuntu may not install ,so please intall using another command)
+ -adnd restart the pc
+ 
+step 3:
+
+ -ubuntu starts atomatically or open ubuntu and installation takes place
+ -give a unique 'Username' and 'Password'(password wont be visible while typing) so type and reenter the password
+ - now you will be in linix virtual machine eg:   pratheepan@DESKTOP-K0A284L:~$
+
+step 4:
+
+ -now we have install java JDK
+ -type this three command
+ "
+ wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
+ sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+ sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
+ "
+ -it will install java in your pc
+ -type 'java -version' to see the version installed
+ 
+step 5:
+  
+ -go to kafka website and download latest scala version
+ -link
+ https://kafka.apache.org/downloads
+ 
+ or 
+ 
+ -we can manually download using ubuntu command
+ -type
+  wget https://archive.apache.org/dist/kafka/3.2.1/kafka_2.13-3.2.1.tgz
+ -to extract data downloaded type 
+   tar xzf kafka_2.13-3.2.1.tgz
+   
+ -now type
+  'ls'
+ - now kafka is extracted 
+ 
+ - type 'pwd' tp see the path
+ eg: /home/pratheepan
+ 
+step 6:
+ -now we have to setup the path
+ - to see the directory type
+ kafka_2.13-3.2.1/bin/
+ 
+ -too see the kafka commands for kafka topics(we need to change it to minimum command as possible)
+ kafka_2.13-3.2.1/bin/kafka-topics.sh
+ 
+##if we type 'kafka-topics.sh' only ,there wont be any output.for this we need to edith the path file##
+ type
+ -cd kafka_2.13-3.2.1/bin/
+ -pwd(which will give me full path to my bin directory) ##output=/home/pratheepan/kafka_2.13-3.2.1/bin
+ -cd ../../(to go two level up ,that is home)
+ -pwd (to check whether it is in home) ##output=/home/pratheepan
+ 
+ ##to go to path
+ -type
+ -nano .bashrc
+  ##go to the very bottom of the file ,so that we can add a line
+ -type
+ -PATH="$PATH:/home/pratheepan/kafka_2.13-3.2.1/bin"(change the version path according to pwd of the file)
+ -save and exit
+ 
+step 7:
+ ##now if we type 
+ -echo $PATH
+ ##we will be in the library
+ -output=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/pratheepan/kafka_2.13-3.2.1/bin
+ ##you can see the last line is mentioned as kafka bin then its finished
+ 
+ 
+ ## now if we type 
+ -kafka-topics.sh
+ we get command line output with various command
+ 
+""#### 
+ Create, delete, describe, or change a topic.
+Option                                   Description
+------                                   -----------
+--alter                                  Alter the number of partitions,
+                                           replica assignment, and/or
+                                           configuration for the topic.
+--at-min-isr-partitions                  if set when describing topics, only
+                                           show partitions whose isr count is
+                                           equal to the configured minimum.
+--bootstrap-server <String: server to    REQUIRED: The Kafka server to connect
+  connect to>                              to.
+ .
+ .
+ .
+ .
+ .
+ .
+ .
+ --under-min-isr-partitions               if set when describing topics, only
+                                           show partitions whose isr count is
+                                           less than the configured minimum.
+--under-replicated-partitions            if set when describing topics, only
+                                           show under replicated partitions
+--version                                Display Kafka version.
+ 
+kafka_2.13-3.2.1
