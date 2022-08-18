@@ -5,13 +5,13 @@ version 3.13.2.1
 
 ##get into "local disk 'C'/kafka/config" open 'server' using notebook 
 
-##search for 'log' change into into
+##search for 'log' change into the file usinf findall ( to change the log using command check the file named directory it will have the command)
 
 log.dirs=c:/kafka/kafka-logs
 
 ##get into "local disk 'C'/kafka/config" open 'zookeeper' using notebook 
  
-##search for 'data' change into into
+##search for 'data' change into the files using findall( to change the directory check the file named directory it will have the command) 
 
 dataDir=c:/kafka/zookeeper-data
 
